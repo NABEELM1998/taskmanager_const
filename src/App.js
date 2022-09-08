@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import Main from './components/Main';
+import projectData from './data.json'
 
 function App() {
+  const [projectPending,setprojectPending] = useState(projectData.pending)
+  const [projectOngoing,setprojectOngoing] = useState(projectData.ongoing)
+  const [projectCompleted,setprojectCompleted] = useState(projectData.completed)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      <Main projectData = {projectData} projectPending = {projectPending} 
+      projectOngoing = {projectOngoing} projectCompleted = {projectCompleted}
+      setprojectPending = {setprojectPending} setprojectOngoing = {setprojectOngoing}
+      setprojectCompleted = {setprojectCompleted}
+      />
+      <Footer/>
     </div>
   );
 }
